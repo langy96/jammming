@@ -1,6 +1,6 @@
 // test.js code
 let accessToken = "";
-const clientID = "bff84ea4a997437997b3006fa74d3a8c";
+const clientID = "ec4ba39f5b58465b93fc8d067009cf4a";
 const redirectUrl = "http://127.0.0.1:3000";
 // const redirectUrl = "https://syphersjammmingproject.surge.sh";
 
