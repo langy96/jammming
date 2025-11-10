@@ -2,7 +2,6 @@
 let accessToken = "";
 const clientID = "ec4ba39f5b58465b93fc8d067009cf4a";
 const redirectUrl = "http://127.0.0.1:3000";
-// const redirectUrl = "https://syphersjammmingproject.surge.sh";
 
 function generateRandomString(length = 128) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
