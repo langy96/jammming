@@ -100,25 +100,27 @@ const Spotify = {
 
 
   async search(term) {
-    accessToken = await Spotify.getAccessToken();
-    return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
-      .then((response) => response.json())
-      .then((jsonResponse) => {
-        if (!jsonResponse) {
-          console.error("Response error");
-        }
-        return jsonResponse.tracks.items.map((t) => ({
-          id: t.id,
-          name: t.name,
-          artist: t.artists[0].name,
-          album: t.album.name,
-          uri: t.uri,
-        }));
-      });
-  },
+  accessToken = await Spotify.getAccessToken();
+  return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+    method: "GET",
+    headers: { Authorization: `Bearer ${accessToken}` },
+  })
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      if (!jsonResponse || !jsonResponse.tracks || !jsonResponse.tracks.items) {
+        console.error("Invalid response structure:", jsonResponse);
+        return [];
+      }
+
+      return jsonResponse.tracks.items.map((t) => ({
+        id: t.id,
+        name: t.name,
+        artist: t.artists[0].name,
+        album: t.album.name,
+        uri: t.uri,
+      }));
+    });
+},
 
   async savePlaylist(name, trackUris) {
     if (!name || !trackUris) return;
