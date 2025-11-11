@@ -90,7 +90,7 @@ const Spotify = {
       `client_id=${clientID}` +
       `&response_type=code` +
       `&redirect_uri=${encodeURIComponent(redirectUrl)}` +
-      `&scope=playlist-modify-public` +
+      `&scope=${encodeURIComponent("playlist-modify-public playlist-modify-private")}` +
       `&code_challenge_method=S256` +
       `&code_challenge=${codeChallenge}`;
 
